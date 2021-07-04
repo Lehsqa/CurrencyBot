@@ -2,20 +2,11 @@ from config import bot_token, exchange_token
 import requests
 import sqlite3
 import datetime
-# from aiogram import Bot, types
-# from aiogram.dispatcher import Dispatcher
-# from aiogram.utils import executor
-# from matplotlib import pyplot as plt
 import os
 import telebot
-# import _thread
-# import kaleido
 import plotly.graph_objects as go
 
 bot = telebot.TeleBot(bot_token)
-
-# bot = Bot(token=bot_token)
-# dp = Dispatcher(bot)
 
 
 def update_database(data):
@@ -178,9 +169,6 @@ def history_currency(message):
 
             fig = go.Figure(data=go.Bar(x=date, y=currency))
             fig.write_image(f'{message.chat.id}.png')
-
-            # plt.scatter(date, currency)
-            # plt.savefig(f'{message.chat.id}.png')
 
             p = open(name, 'rb')
             bot.send_photo(message.chat.id, p)
