@@ -36,7 +36,7 @@ def check_for_update():
     cursor.execute("SELECT timestamp FROM exchange")
     timestamp = cursor.fetchone()
 
-    if timestamp_new - int(timestamp[0]) >= 600:
+    if timestamp_new - float(timestamp[0]) >= 600:
         update_database(data)
 
 
