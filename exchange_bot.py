@@ -36,7 +36,7 @@ def check_for_update():
     cursor.execute("SELECT timestamp FROM exchange")
     timestamp = cursor.fetchone()
 
-    if timestamp_new - int(timestamp[0], base=10) >= 600:
+    if timestamp_new - float(timestamp[0]) >= 600:
         update_database(data)
 
 
@@ -182,7 +182,11 @@ def history_currency(message):
         bot.send_message(message.chat.id, "Try again. Sample:\n/history USD/GBP for 7 days")
 
         print(f"User {message.chat.id} execute command /history (Error)")
-
+        
+        
+def main():
+    bot.polling(none_stop=True)
+        
 
 if __name__ == '__main__':
-    bot.polling(none_stop=True)
+    main()
