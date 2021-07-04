@@ -180,7 +180,8 @@ def history_currency(message):
 
             print(f"User {message.chat.id} execute command /history (Error of api)")
     except:
-        bot.send_message(message.chat.id, "Try again. Sample:\n/history USD/GBP for 7 days\nOr need to restart bot")
+        bot.send_message(message.chat.id, "Try again. Sample:\n/history USD/GBP for 7 days\nOr "
+                                          "no exchange rate data is available for the selected currency")
 
         print(f"User {message.chat.id} execute command /history (Error)")
 
