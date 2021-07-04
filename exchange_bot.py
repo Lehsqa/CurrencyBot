@@ -170,9 +170,6 @@ def history_currency(message):
             fig = go.Figure(data=go.Bar(x=date, y=currency))
             fig.write_image(f'{message.chat.id}.png')
 
-            # plt.scatter(date, currency)
-            # plt.savefig(f'{message.chat.id}.png')
-
             p = open(name, 'rb')
             bot.send_photo(message.chat.id, p)
 
