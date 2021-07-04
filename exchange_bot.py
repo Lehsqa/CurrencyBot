@@ -36,7 +36,7 @@ def check_for_update():
     cursor.execute("SELECT timestamp FROM exchange")
     timestamp = cursor.fetchone()
 
-    if timestamp_new - float(timestamp[0]) >= 600:
+    if timestamp_new - int(timestamp[0], base=10) >= 600:
         update_database(data)
 
 
@@ -145,7 +145,7 @@ def history_currency(message):
 
         cursor.execute("SELECT timestamp FROM exchange")
         timestamp = cursor.fetchone()
-        timestamp_end = int(float(timestamp[0])) - 86400
+        timestamp_end = int(timestamp[0], base=10) - 86400
         timestamp_start = timestamp_end - 86400 * days
 
         value_end = datetime.datetime.fromtimestamp(timestamp_end)
