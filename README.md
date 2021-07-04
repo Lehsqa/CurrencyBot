@@ -1,1 +1,1 @@
-Ссылка на бота: @SampleCurrencyBot
+Reference of bot: @SampleCurrencyBot
