@@ -42,7 +42,7 @@ def check_for_update():
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
-    bot.send_message(message.chat.id, """Hello, it's bot was created for discovering currency of USD
+    bot.send_message(message.chat.id, """Hello, this bot was created for discovering currency of USD
 relatively EUR and GBP. Write /help to find out commands""")
 
     connect = sqlite3.connect('exchange.db')
