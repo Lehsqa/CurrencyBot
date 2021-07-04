@@ -112,7 +112,7 @@ def exchange_currency(message):
         currency = get_text[4] + "USD"
 
         cursor.execute(f"SELECT {currency} FROM exchange")
-        data_currency = cursor.fetchall()
+        data_currency = cursor.fetchone()
 
         new_value = float(get_text[1]) * float(data_currency[0][0])
         new_value = format(new_value, '.2f')
