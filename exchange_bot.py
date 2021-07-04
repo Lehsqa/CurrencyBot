@@ -155,7 +155,7 @@ def history_currency(message):
         value_start = value_start.strftime('%Y-%m-%d')
 
         data = requests.get(
-            f"https://fxmarketapi.com/apitimeseries?api_key=z9ekKTiJ9pKVSbVqgU0i&currency=EURUSD,GBPUSD"
+            f"https://fxmarketapi.com/apitimeseries?api_key={exchange_token}&currency=EURUSD,GBPUSD"
             f"&start_date={value_start}&end_date={value_end}&format=ohlc"
         ).json()
 
@@ -170,18 +170,19 @@ def history_currency(message):
             fig = go.Figure(data=go.Bar(x=date, y=currency))
             fig.write_image(f'{message.chat.id}.png')
 
+            # plt.scatter(date, currency)
+            # plt.savefig(f'{message.chat.id}.png')
+
             p = open(name, 'rb')
             bot.send_photo(message.chat.id, p)
 
             print(f"User {message.chat.id} execute command /history (Successful)")
-
         except KeyError:
-            bot.send_message(message.chat.id, "Please, change the period of days")
+            bot.send_message(message.chat.id, "No exchange rate data is available for the selected currency")
 
             print(f"User {message.chat.id} execute command /history (Error of api)")
-    except:
-        bot.send_message(message.chat.id, "Try again. Sample:\n/history USD/GBP for 7 days\nOr "
-                                          "no exchange rate data is available for the selected currency")
+    except IndexError:
+        bot.send_message(message.chat.id, "Try again. Sample:\n/history USD/GBP for 7 days")
 
         print(f"User {message.chat.id} execute command /history (Error)")
 
