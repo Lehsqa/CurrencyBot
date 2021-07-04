@@ -1,1 +1,1 @@
-Reference of bot: @SampleCurrencyBot
+Reference of the bot: @SampleCurrencyBot
