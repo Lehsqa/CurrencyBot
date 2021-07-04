@@ -145,7 +145,7 @@ def history_currency(message):
 
         cursor.execute("SELECT timestamp FROM exchange")
         timestamp = cursor.fetchone()
-        timestamp_end = int(timestamp[0]) - 86400
+        timestamp_end = int(float(timestamp[0])) - 86400
         timestamp_start = timestamp_end - 86400 * days
 
         value_end = datetime.datetime.fromtimestamp(timestamp_end)
